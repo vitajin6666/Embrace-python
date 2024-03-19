@@ -1,0 +1,51 @@
+ANACONDA
+已做过无需再做:
+anaconda换源：
+  conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  conda config --set show_channel_urls yes
+更改anaconda虚拟环境默认安装位置：
+conda config --add envs_dirs  D:\python\anaconda\envs
+
+以下后续还可以继续做：
+查看anaconda配置信息：
+conda info
+查看python版本:
+python
+查看虚拟环境列表：
+conda env list
+新建虚拟环境：
+conda create -n yourname python=3.7
+启用虚拟环境
+conda activate yourname
+关闭虚拟环境
+conda activate base
+删除虚拟环境
+conda remove -n yourname --all
+指定源安装
+pip install opencv-python -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+Vscode
+https://www.bilibili.com/video/BV1bQ4y1n7sn/?spm_id_from=333.337.search-card.all.click
+注释：Ctrl + /
+选行run: shift+enter
+
+
+
+jupyter notebook
+打开使用
+anaconda prompt
+d:
+cd D:\python\practice
+
+
+
+jupyter notebook
+各类快捷用法：
+RUN: shift+ENTER
+单词补齐：TAB
+帮助：（）+shift+双击TAB
+魔术命令：
+%pwd:查看当前目录
+%matplotlib inline: 直接把图画在里面
+%timeit [syntax]: 计算运行时间
