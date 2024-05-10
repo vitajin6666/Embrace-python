@@ -1,0 +1,12 @@
+First, please read the relevant materials: 
+Imagine that you are a tourist now looking for a suitable tourism destination for the upcoming weekend. You have not decided which place to visit yet, so you are looking up tourism information about different destinations.
+At this time, you happen to see a negative event report about destination A：
+Scenic area A is a National AAAAA level tourist attraction in China, where the scenery is unique and beautiful. Managers manipulated tour guides to arrange forced consumption. The tour guides added shopping items to tourists’ bags without authorization, and tourists who did not spend money were verbally abused by tour guides. Tourists were not allowed to leave unless they had spent at least 10,000 yuan on souvenirs. This compulsory shopping has aroused great social concern, and the annual visits to Scenic Area A are expected to decrease by 40%.
+
+According to above materials and assume you are the main character in the material that you are a tourist reading the materials from news. Please answer the corresponding questions without explanation. Just answer number and separat each answer with a comma:
+
+I would disapprove of Scenic Area A (1 = strongly disagree, 7 = strongly agree)
+I would blame Scenic Area A (1 = strongly disagree, 7 = strongly agree)
+I would think favorably of Scenic Area A (1 = strongly disagree, 7 = strongly agree)
+I would forgive Scenic Area A (1 = strongly disagree, 7 = strongly agree)
+I would sympathize with Scenic Area A (1 = strongly disagree, 7 = strongly agree)
