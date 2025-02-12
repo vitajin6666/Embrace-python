@@ -93,14 +93,14 @@ def get(prompt, apikey):
     # 设置 API 密钥
     openai.api_key = apikey
     # 调用 ChatGPT
-    # client = openai.OpenAI()  # 此行新加
-    response = openai.ChatCompletion.create( # 和下一行相互替换
-    # client.chat.completions.create(
+    client = openai.OpenAI()  # 此行新加
+    response =  client.chat.completions.create( # 和下一行相互替换
+    # openai.ChatCompletion.create( # 原本的代码
         model="gpt-3.5-turbo",
         messages=[
             {"role": "user", "content": prompt},
         ],
-        temperature=0.2,
+        temperature=1.0,
     )
     # 输出响应结果
     answer = response.choices[0].message.content.strip()
