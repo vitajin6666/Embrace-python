@@ -8,32 +8,51 @@ use "D:\python\learn_python\7.paper_code\DID\learn_DID\基础变量处理\basic_
 /********************************************************** 时间相关变量 ****************************************** */
 
 * 1.根据year,month生成time（YYYYMM，例如：200405）
-gen time = string(Year) + string(Month, "%02.0f") // 创建一个字符串变量，格式为 "YYYYMM",例如：200405
 
-gen year_month = year*100+month //生成数值型year_month
+// 创建一个字符串变量，格式为 "YYYYMM",例如：200405
+gen time = string(Year) + string(Month, "%02.0f") 
 
-destring year_month, replace // 将字符串形式转换成字符型
+//生成数值型year_month
+gen year_month = year*100+month 
+* destring year_month, replace // 可以将字符串形式转换成字符型
 
-gen event_time = year*12 + month - (2005*12+3) //构造相对时间变量
-
-* 还有一种可以生成stata可识别的时间变量的方法（只在画图法平行趋势检验中用）格式为：2004m1
-gen time = ym(year, month)
-format time %tm
 
 
 * 2.生成dym*
-levelsof time , local(ym_list) // 获取所有唯一的 "YYYYMM" 值
 
-//根据每个唯一的 "YYYYMM" 值生成 dummy 变量
+//方法1：允许命名成dym_200301
+levelsof time , local(ym_list) // 获取所有唯一的 "YYYYMM" 值
+*根据每个唯一的 "YYYYMM" 值生成 dummy 变量
 foreach ym in `ym_list' {
     di "Processing: `ym'"
     gen dym_`ym' = (time == "`ym'")
 }
 
+//方法2：自动命名成dym_1
+tab time, gen(dym_) 
+
+
 * 3.生成T(post)
 gen reform = ( Year > 2005) | ( Year == 2005 & Month >= 9)
 
-* 4.(可选）根据时间生成某些变量
+* 4.构造成stata可识别的时间变量的方法（格式为：2004m1）
+
+gen time = ym(year, month) // Stata 的 ym() 时间变量是基于1960年1月开始的月度计数。例如，ym(2004, 6) 的值是 533（表示从1960年1月到2004年6月的总月数）
+format time %tm // 设置时间为月度格式,从数字533变到2004m6
+
+// 还可以从2004m6的格式重新提取出year=2004,month=06
+gen temp_birth = dofm( birth_date )
+gen birth_year = year(temp_birth)
+gen birth_month = month(temp_birth)
+
+* 5.构造相对时间变量
+* 方法1
+gen event_time = year*12 + month - (2005*12+3) //(2005*12+3)表示2005年3月
+
+*方法2：time和birth_date都是ym()时间变量
+gen relative_time = time-birth_date 
+
+
 
 /********************************************************** 生成D(Treat) ****************************************** */
 gen treatment = (Division<=4)
