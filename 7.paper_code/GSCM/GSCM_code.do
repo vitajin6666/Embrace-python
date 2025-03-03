@@ -1,0 +1,1 @@
+* 在 Stata 中，GSCM 可以通过用户开发的命令 gsynth 或 fect 实现
